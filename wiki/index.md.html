@@ -1,7 +1,21 @@
 		**Wiki**
 	(Subheading), authored by RaKa
 
+Objectives
+==========
+The super idealistic perfect version of this project would be Tony Stark's Jarvis. OpenAI is very likely already apporaching this very fast but I'd like to try my hand at making such a system.
 
+I guess a more reasonable version would be sommething thats a much more personalizable than voice assistants like Alexa, Google home, and Siri. It would also be really cool it the inteface has an avatar that emotes.
+
+
+Implementation thoughts
+=======================
+There should be a voice interaction service that interfaces with the microphone and speaker. It will use this interface to interact with me. This service will also expose an api on a websocket connection.
+Once this voice interactin service is stablish other features should be added that use the api to extend the voice intercation service's capabalaties. 
+
+There's no doubt that I'm going to be using LLM's and that I'm going to be running a bunch of experiemnts. So I want to use mlflow to track the experiements
+
+When I get around to making an emoting avatar, it should use the voice interaction service's websocket api to emote and lip sync appropriately. Or maybe it can tap into the speaker to get a sense of the sounds being produced. 
 
 
 
