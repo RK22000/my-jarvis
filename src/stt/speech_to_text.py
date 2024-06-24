@@ -15,7 +15,7 @@ def generate_STT():
 
     print(f"Logging at {log_file}")
     # Path to the Vosk model directory
-    model_path = "models/vosk-model-small-en-in-0.4"
+    model_path = "models/vosk/vosk-model-small-en-in-0.4"
 
     logger.info(f"Loading model: {model_path}")
     # Load the model
