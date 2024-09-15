@@ -11,7 +11,7 @@ async def exception_handeler(handler: typing.Callable):
     try:
         await handler()
     except websockets.ConnectionClosedOK:
-        logger.info(f"[Server Closed Ok]")
+        logger.info("[Server Closed Ok]")
     except websockets.ConnectionClosedError as e:
         logger.info(f"[Server Closed Error]: {e}")
         logger.debug(e)
@@ -29,7 +29,7 @@ async def server():
         try:
             await asyncio.Future()
         except asyncio.CancelledError:
-            logging.info("[Canceling Server Process]")
+            logger.info("[Canceling Server Process]")
 
 if __name__=="__main__":
     logging.basicConfig(level=logging.INFO)

@@ -21,17 +21,21 @@ def generate_STT():
     # Load the model
     model = Model(model_path)
 
-    logger.info(f"Initializing KaldiRecognizer")
+    logger.info("Initializing KaldiRecognizer")
     # Initialize the recognizer with the model and the sample rate
-    recognizer = KaldiRecognizer(model, 16000)
+    recognizer = KaldiRecognizer(model, 48000)
 
-    logger.info(f"Initializing PyAudio")
+    logger.info("Initializing PyAudio")
     # Initialize PyAudio
     audio = pyaudio.PyAudio()
 
     logger.info("Opeining an audio stream")
+    # print()
+    # print(audio.get_default_input_device_info())
+    # print()
+    # exit()
     # Open a stream for audio input
-    stream = audio.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
+    stream = audio.open(format=pyaudio.paInt16, channels=1, rate=48000, input=True, frames_per_buffer=8000)
     stream.start_stream()
 
     logger.info("Listening...")
@@ -39,6 +43,7 @@ def generate_STT():
     try:
         while True:
             data = stream.read(4000, exception_on_overflow=False)
+            # print(data)
             if recognizer.AcceptWaveform(data):
                 result = recognizer.Result()
                 result_dict = json.loads(result)
@@ -59,3 +64,6 @@ def generate_STT():
         audio.terminate()
         print("Finished.")
 
+if __name__=='__main__':
+    for i in generate_STT():
+        print(i)
