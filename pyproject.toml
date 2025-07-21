@@ -4,4 +4,17 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "my-jarvis-core @ file:///${PROJECT_ROOT}/pypacks/core"
+]
+
+[project.optional-dependencies]
+auth = [
+    "my-jarvis-auth @ file:///${PROJECT_ROOT}/pypacks/auth"
+]
+cli = [
+    "my-jarvis-cli-client @ file:///${PROJECT_ROOT}/pypacks/cli-client"
+]
+fs = [
+    "my-jarvis-fs-datastore @ file:///${PROJECT_ROOT}/pypacks/fs-datastore"
+]

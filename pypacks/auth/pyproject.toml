@@ -1,0 +1,16 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "my-jarvis-auth"
+version = "0.1.0"
+description = "Authentication for my-jarvis"
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["my_jarvis"]
