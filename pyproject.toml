@@ -4,17 +4,31 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = [
-    "my-jarvis-core @ file:///${PROJECT_ROOT}/pypacks/core"
-]
+dependencies = []
 
 [project.optional-dependencies]
-auth = [
-    "my-jarvis-auth @ file:///${PROJECT_ROOT}/pypacks/auth"
+core = [
+    "my-jarvis-core @ file:///${PROJECT_ROOT}/pypacks/core"
 ]
-cli = [
-    "my-jarvis-cli-client @ file:///${PROJECT_ROOT}/pypacks/cli-client"
+# auth = [
+#     "my-jarvis-auth @ file:///${PROJECT_ROOT}/pypacks/auth"
+# ]
+# cli = [
+#     "my-jarvis-cli-client @ file:///${PROJECT_ROOT}/pypacks/cli-client"
+# ]
+# fs = [
+#     "my-jarvis-fs-datastore @ file:///${PROJECT_ROOT}/pypacks/fs-datastore"
+# ]
+server = [
+    "my-jarvis-server @ file:///${PROJECT_ROOT}/pypacks/server"
 ]
-fs = [
-    "my-jarvis-fs-datastore @ file:///${PROJECT_ROOT}/pypacks/fs-datastore"
+
+[dependency-groups]
+dev = [
+    "ipython>=9.4.0",
+    "my-jarvis[core, server]",
 ]
+
+[tool.uv.sources]
+my-jarvis = { workspace = true }
+
