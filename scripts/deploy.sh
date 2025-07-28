@@ -17,7 +17,7 @@ ssh -tt linode-raka << 'EOF'
   exit 0
 EOF
 
-echo "Checking health endpoint at http://raka42.duckdns.org:8000/health..."
+echo "Checking health endpoint at https://myjarvis.raka42.duckdns.org..."
 
 max_retries=3
 retry_delay=2  # seconds
@@ -27,7 +27,7 @@ while [ "$attempt" -le "$max_retries" ]; do
   echo "Attempt $attempt of $max_retries..."
 
   health_check=$(curl -s -X GET \
-    'http://raka42.duckdns.org:8000/health' \
+    'https://myjarvis.raka42.duckdns.org/health' \
     -H 'accept: application/json')
 
   if [ "$health_check" = '"OK"' ]; then
