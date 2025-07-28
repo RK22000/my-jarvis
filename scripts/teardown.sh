@@ -4,7 +4,7 @@ set -e
 echo "Starting teardown..."
 
 ssh -tt linode-raka << 'EOF'
-  pkill -f "uv run uvicorn my_jarvis.server.app:app"
+  pkill -f "uv run gunicorn -k uvicorn.workers.UvicornWorker my_jarvis.server.app:app"
   exit 0
 EOF
 

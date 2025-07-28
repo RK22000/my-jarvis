@@ -36,6 +36,7 @@ This document will track progress, notes, and todos for Phase 1.
           - `:app` refers to the FastAPI instance named `app` in that file
 
 3. **Enable HTTPS**
+    - Registerd free domain with duckdns at [raka42.duckdns.org](http://raka42.duckdns.org:8000/docs)
     - Obtain SSL certificates (use Let's Encrypt for free certs).
     - Configure Uvicorn or a reverse proxy (e.g., Nginx) to serve HTTPS traffic.
     - Example Nginx config:
