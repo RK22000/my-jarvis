@@ -11,7 +11,7 @@ ssh -tt linode-raka << 'EOF'
   echo "Installing dependencies..."
   uv sync
   echo "Launching the application..."
-  uv run uvicorn my_jarvis.server.app:app --host 0.0.0.0 --port 8000 > app.log 2>&1 &
+  uv run gunicorn -k uvicorn.workers.UvicornWorker my_jarvis.server.app:app --host 0.0.0.0 --port 8000 > app.log 2>&1 &
   disown
   echo "Application is running in the background..."
   exit 0
