@@ -7,6 +7,8 @@ echo "Copying .env file to server..."
 scp .env linode-raka:~/my-jarvis/.env
 
 ssh -tt linode-raka << 'EOF'
+  pkill -f 'gunicorn.*my_jarvis.server.app:app' || true
+  # then continue with your deploy commands...
   echo "Navigating to the project directory..."
   cd my-jarvis/
   echo "Pulling the latest changes from the repository..."
@@ -24,7 +26,7 @@ ssh -tt linode-raka << 'EOF'
   exit 0
 EOF
 
-echo "Checking health endpoint at https://myjarvis.raka42.duckdns.org..."
+echo "Checking health endpoint at https://myjarvis.raka42.duckdns.org/health..."
 
 max_retries=3
 retry_delay=2  # seconds
