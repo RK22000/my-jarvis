@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from .auth import router as auth_router, MIDDLEWARE_KEY
 from starlette.middleware.sessions import SessionMiddleware
+from .auth import router as auth_router, MIDDLEWARE_KEY
 
 app = FastAPI()
 app.add_middleware(SessionMiddleware, secret_key=MIDDLEWARE_KEY)
