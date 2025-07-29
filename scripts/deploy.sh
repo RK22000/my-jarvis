@@ -3,6 +3,9 @@ set -e
 
 echo "Starting deployment..."
 
+echo "Copying .env file to server..."
+scp .env linode-raka:~/my-jarvis/.env
+
 ssh -tt linode-raka << 'EOF'
   echo "Navigating to the project directory..."
   cd my-jarvis/
@@ -10,6 +13,10 @@ ssh -tt linode-raka << 'EOF'
   git pull --prune
   echo "Installing dependencies..."
   uv sync
+  echo "Sourcing environment variables from .env..."
+  set -a  # export all variables automatically
+  source .env
+  set +a
   echo "Launching the application..."
   uv run gunicorn -k uvicorn.workers.UvicornWorker my_jarvis.server.app:app --bind 0.0.0.0:8000 > app.log 2>&1 &
   disown

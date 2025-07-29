@@ -20,6 +20,7 @@ def get_env_var(key: str) -> str:
 GOOGLE_CLIENT_ID: str = get_env_var("GOOGLE_CLIENT_ID")
 GOOGLE_CLIENT_SECRET: str = get_env_var("GOOGLE_CLIENT_SECRET")
 GOOGLE_REDIRECT_URI: str = get_env_var("GOOGLE_REDIRECT_URI")
+MIDDLEWARE_KEY: str = get_env_var("MIDLEWARE_KEY")
 
 # Type for parsed user info
 class GoogleUserInfo(TypedDict):
