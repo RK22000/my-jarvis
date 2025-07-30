@@ -19,7 +19,7 @@ GOOGLE_REDIRECT_URI=get_var("GOOGLE_REDIRECT_URI")
 app = FastAPI()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-@app.get("/login/google2")
+@app.get("/login/google")
 def login_google():
     url = (
         f"https://accounts.google.com/o/oauth2/auth"
@@ -29,8 +29,7 @@ def login_google():
         f"&scope=openid%20profile%20email"
         f"&access_type=offline"
     )
-    # return RedirectResponse(url)
-    return "Hello"
+    return RedirectResponse(url)
 
 @app.get("/auth/callback")
 def auth_google(code: str):
