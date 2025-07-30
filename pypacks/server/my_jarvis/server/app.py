@@ -19,7 +19,7 @@ GOOGLE_REDIRECT_URI=get_var("GOOGLE_REDIRECT_URI")
 app = FastAPI()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-@app.get("/login/google")
+@app.get("/login/google2")
 def login_google():
     url = (
         f"https://accounts.google.com/o/oauth2/auth"
