@@ -20,7 +20,7 @@ app = FastAPI()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 @app.get("/login/google")
-async def login_google():
+def login_google():
     url = (
         f"https://accounts.google.com/o/oauth2/auth"
         f"?response_type=code"
@@ -33,7 +33,7 @@ async def login_google():
     return "Hello"
 
 @app.get("/auth/callback")
-async def auth_google(code: str):
+def auth_google(code: str):
     token_url = "https://accounts.google.com/o/oauth2/token"
     data = {
         "code": code,

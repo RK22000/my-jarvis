@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 set -e
 
+# Check for uncommitted changes
+if ! git diff --quiet || ! git diff --cached --quiet; then
+  echo "Uncommitted changes found. Committing..."
+  git add -A
+  git commit -am "🚀 deployment commit"
+  git push
+else
+  echo "No uncommitted changes. Skipping commit."
+fi
+
 echo "Starting deployment..."
 
 scp .env linode-raka:~/my-jarvis/.env
