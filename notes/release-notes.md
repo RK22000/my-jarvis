@@ -1,5 +1,10 @@
 # Release notes
 
+## release-0.0.4 Wed 30 Jul 2025 12:13:45 AM PDT
+
+* Ok this is it now
+* 🤞
+
 ## release-0.0.3 Wed 30 Jul 2025 12:12:21 AM PDT
 
 * trying again
