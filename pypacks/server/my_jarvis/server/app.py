@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends
+from fastapi.responses import RedirectResponse
 from fastapi.security import OAuth2PasswordBearer
 import requests
 from jose import jwt
@@ -20,9 +21,15 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 @app.get("/login/google")
 async def login_google():
-    return {
-        "url": f"https://accounts.google.com/o/oauth2/auth?response_type=code&client_id={GOOGLE_CLIENT_ID}&redirect_uri={GOOGLE_REDIRECT_URI}&scope=openid%20profile%20email&access_type=offline"
-    }
+    url = (
+        f"https://accounts.google.com/o/oauth2/auth"
+        f"?response_type=code"
+        f"&client_id={GOOGLE_CLIENT_ID}"
+        f"&redirect_uri={GOOGLE_REDIRECT_URI}"
+        f"&scope=openid%20profile%20email"
+        f"&access_type=offline"
+    )
+    return RedirectResponse(url)
 
 @app.get("/auth/callback")
 async def auth_google(code: str):

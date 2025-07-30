@@ -3,6 +3,8 @@ set -e
 
 echo "Starting deployment..."
 
+scp .env linode-raka:~/my-jarvis/.env
+
 ssh -tt linode-raka << 'EOF'
   pkill -f 'gunicorn -k uvicorn.workers.UvicornWorker my_jarvis.server.app:app' || true
   echo "Navigating to the project directory..."
@@ -12,6 +14,10 @@ ssh -tt linode-raka << 'EOF'
   git reset --hard origin/main
   echo "Installing dependencies..."
   uv sync
+  echo "Loading environment variables..."
+  set -a
+  source .env
+  set +a
   echo "Launching the application..."
   uv run gunicorn -k uvicorn.workers.UvicornWorker my_jarvis.server.app:app --bind 0.0.0.0:8000 > app.log 2>&1 &
   disown
