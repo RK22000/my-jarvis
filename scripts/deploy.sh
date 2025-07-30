@@ -23,6 +23,8 @@ ssh -tt linode-raka << 'EOF'
   git fetch origin main
   git reset --hard origin/main
   echo "Installing dependencies..."
+  rm -r .venv || true
+  uv cache clean
   uv sync
   echo "Loading environment variables..."
   set -a
