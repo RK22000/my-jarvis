@@ -4,10 +4,12 @@ set -e
 echo "Starting deployment..."
 
 ssh -tt linode-raka << 'EOF'
+  pkill -f 'gunicorn -k uvicorn.workers.UvicornWorker my_jarvis.server.app:app' || true
   echo "Navigating to the project directory..."
   cd my-jarvis/
   echo "Pulling the latest changes from the repository..."
-  git pull --prune
+  git fetch origin main
+  git reset --hard origin/main
   echo "Installing dependencies..."
   uv sync
   echo "Launching the application..."
