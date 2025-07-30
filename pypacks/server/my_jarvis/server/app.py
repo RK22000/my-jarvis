@@ -29,7 +29,8 @@ async def login_google():
         f"&scope=openid%20profile%20email"
         f"&access_type=offline"
     )
-    return RedirectResponse(url)
+    # return RedirectResponse(url)
+    return "Hello"
 
 @app.get("/auth/callback")
 async def auth_google(code: str):
