@@ -9,7 +9,11 @@ description = "server package for my-jarvis"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi[standard]",
-    "uvicorn[standard]"
+    "uvicorn[standard]",
+    "gunicorn>=23.0.0",
+    "python-jose[cryptography]>=3.5.0",
+    "python-multipart>=0.0.20",
+    "requests>=2.32.4",
 ]
 
 [tool.hatch.metadata]

@@ -1,0 +1,1 @@
+uv run gunicorn -k uvicorn.workers.UvicornWorker my_jarvis.server.app:app --bind 0.0.0.0:8000
