@@ -19,7 +19,7 @@ ssh -tt linode-raka << 'EOF'
   exit 0
 EOF
 
-echo "Checking health endpoint at https://myjarvis.raka42.duckdns.org..."
+echo "Checking health endpoint at https://myjarvis.raka42.duckdns.org/health"
 
 max_retries=3
 retry_delay=2  # seconds
